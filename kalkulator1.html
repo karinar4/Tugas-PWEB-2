@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kalkulator</title>
+    </head>
+
+    <body>
+        <h1>Kalkulator</h1>
+        <input type="number" id="angka1">
+        <input type="number" id="angka2">
+        
+        <br><br>
+        
+        <button onclick="hitung('+')">+</button>
+        <button onclick="hitung('-')">-</button>
+        <button onclick="hitung('*')">*</button>
+        <button onclick="hitung('/')">/</button>
+
+        <p id="hasil"></p>
+
+        <script>
+            function hitung(operasi) {
+                let x = document.getElementById("angka1").value;
+                let xInt = parseInt(x);
+                let y = document.getElementById("angka2").value;
+                let yInt = parseInt(y);
+
+                if (!isNaN(xInt) && !isNaN(yInt)) {
+                    if (operasi === '+') {
+                        document.getElementById("hasil").innerHTML = xInt + yInt;
+                    } else if (operasi === '-') {
+                        document.getElementById("hasil").innerHTML = xInt - yInt;
+                    } else if (operasi === '*') {
+                        document.getElementById("hasil").innerHTML = xInt * yInt;
+                    } else if (operasi === '/') {
+                        if (yInt !== 0) {
+                            document.getElementById("hasil").innerHTML = xInt / yInt;
+                        } else {
+                            document.getElementById("hasil").innerHTML = "Tidak dapat dibagi oleh 0";
+                        }
+                    }
+                } else {
+                    document.getElementById("hasil").innerHTML = "Masukkan angka yang valid";
+                }
+            }
+        </script>
+    </body>
+</html>

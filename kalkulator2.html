@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kalkulator</title>
+</head>
+<body>
+    <h1>Kalkulator</h1>
+    <form name="calculator">
+        <input type="text" name="display" id="display" disabled>
+        <br><br>
+        <input type="button" value=0 onclick="addToDisplay('0')">
+        <input type="button" value=1 onclick="addToDisplay('1')">
+        <input type="button" value=2 onclick="addToDisplay('2')">
+        <input type="button" value=3 onclick="addToDisplay('3')">
+        <input type="button" value=4 onclick="addToDisplay('4')">
+        <input type="button" value=5 onclick="addToDisplay('5')">
+        <input type="button" value=6 onclick="addToDisplay('6')">
+        <input type="button" value=7 onclick="addToDisplay('7')">
+        <input type="button" value=8 onclick="addToDisplay('8')">
+        <input type="button" value=9 onclick="addToDisplay('9')">
+        <br><br>
+        <input type="button" value="+" onclick="addToDisplay(' + ')">
+        <input type="button" value="-" onclick="addToDisplay(' - ')">
+        <input type="button" value="*" onclick="addToDisplay(' * ')">
+        <input type="button" value="/" onclick="addToDisplay(' / ')">
+        <input type="button" value="C" onclick="clearDisplay()">
+        <input type="button" value="=" onclick="calculate()">
+    </form>
+
+    <script>
+        function addToDisplay(value) {
+            document.calculator.display.value += value;
+        }
+
+        function clearDisplay() {
+            document.calculator.display.value = '';
+        }
+
+        function calculate() {
+            try {
+                let text = document.calculator.display.value;
+                const opArray = text.split(" ");
+                let angka1 = parseInt(opArray[0]);
+                let angka2 = parseInt(opArray[2]);
+                let operator = opArray[1];
+
+                if (operator == '+') {
+                    document.calculator.display.value = String(angka1 + angka2);
+                } else if (operator == '-') {
+                    document.calculator.display.value = String(angka1 - angka2);
+                } else if (operator == '*') {
+                    document.calculator.display.value = String(angka1 * angka2);
+                } else if (operator == '/') {
+                    if (angka2 != 0) {
+                        document.calculator.display.value = String(angka1 / angka2);
+                    } else {
+                        document.calculator.display.value = "Tidak dapat dibagi oleh 0";
+                    }
+                }
+            } catch(error) {
+                document.calculator.display.value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
